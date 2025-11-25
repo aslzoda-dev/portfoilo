@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aslzoda  Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+<style>
+  :root{
+    --bg-dark:#04060c;
+    --glass: rgba(255,255,255,0.06);
+    --accent:#00eaff;
+    --accent-2:#7b2cff;
+    --muted:rgba(255,255,255,0.78);
+    --card-radius:18px;
+    --max-width:1200px;
+  }
+
+
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+  html,body{
+    min-height:100%;
+
+    background: radial-gradient(circle at 25% 25%, #0ff 0%, #001 20%, #120032 40%, #000 70%, #001 100%);
+    background-size: 400% 400%;
+    animation: bgCosmic 40s ease infinite;
+    color:#fff;
+    overflow-y:auto;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    --time-slow: 1;
+    position: relative;
+}
+
+
+@keyframes bgCosmic {
+    0%{background-position:0% 50%;}
+    25%{background-position:50% 100%;}
+    50%{background-position:100% 50%;}
+    75%{background-position:50% 0%;}
+    100%{background-position:0% 50%;}
+}
+
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    background:
+        radial-gradient(40% 30% at 10% 20%, rgba(0,234,255,0.1), transparent 20%),
+        radial-gradient(40% 30% at 85% 30%, rgba(255,0,255,0.1), transparent 18%),
+        radial-gradient(50% 40% at 50% 80%, rgba(0,128,255,0.08), transparent 20%);
+    filter:blur(90px);
+    animation: auroraMove 30s ease-in-out infinite alternate;
+}
+
+
+@keyframes auroraMove{
+    0%{transform:translate(-50px,-30px) rotate(0deg);}
+    50%{transform:translate(60px,40px) rotate(45deg);}
+    100%{transform:translate(-50px,-30px) rotate(0deg);}
+}
+
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    background:
+      radial-gradient(white 0.5px, transparent 1px),
+      radial-gradient(white 0.5px, transparent 1px);
+    background-size: 50px 50px, 100px 100px;
+    opacity:0.15;
+    animation: starsMove 120s linear infinite;
+}
+
+@keyframes starsMove{
+    0%{background-position:0 0,0 0;}
+    50%{background-position:200px 100px, -150px -80px;}
+    100%{background-position:0 0,0 0;}
+}
+body {
+    min-height: 100%;
+    color: #fff;
+    overflow-y: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+    background: linear-gradient(270deg, #ff0080, #7928ca, #00eaff, #ffbf00, #ff0080);
+    background-size: 1000% 1000%;
+    animation: gradientShift 60s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%{background-position:0% 50%;}
+    25%{background-position:50% 50%;}
+    50%{background-position:100% 50%;}
+    75%{background-position:50% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+
+  @media (prefers-reduced-motion: reduce){
+    :root{ --time-slow: 3; }
+  }
+
+
+  .wrap{max-width:var(--max-width);margin:0 auto;padding:36px 22px 80px;}
+
+
+  .gradient-overlay{
+    position:fixed;inset:0;pointer-events:none;z-index:-3;
+    background:linear-gradient(90deg,var(--accent),#ff00ff,#ffbf00,var(--accent));
+    background-size:800% 800%;
+    opacity:0.08;
+    animation:gradMove 20s calc(0s / var(--time-slow)) linear infinite;
+    filter:blur(60px);
+  }
+  @keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+
+  .aurora{
+    position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(40% 30% at 10% 20%, rgba(0,234,255,0.12), transparent 20%),
+      radial-gradient(40% 30% at 85% 30%, rgba(255,0,255,0.12), transparent 18%),
+      radial-gradient(50% 40% at 50% 80%, rgba(0,128,255,0.10), transparent 20%);
+    filter:blur(60px);
+    animation:auroraMove 16s calc(0s / var(--time-slow)) ease-in-out infinite alternate;
+  }
+  @keyframes auroraMove{0%{transform:translate(-30px,-20px)}50%{transform:translate(30px,20px)}100%{transform:translate(-40px,-30px)}}
+
+  header.hero{min-height:86vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:18px;padding-bottom:18px}
+  .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;width:100%;max-width:1200px;margin:0 auto;padding:18px}
+  @media (max-width:980px){ .hero-grid{grid-template-columns:1fr} .hero-preview{order:2} .hero-card{order:1} }
+
+  .hero-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius:24px;padding:36px;border:1px solid rgba(255,255,255,0.06);
+    backdrop-filter:blur(10px);box-shadow:0 12px 60px rgba(0,0,0,0.65);
+    transition:transform .45s ease,box-shadow .45s ease;
+  }
+  .hero-card .name{font-size:2.2rem;font-weight:800;letter-spacing:-0.6px}
+  .hero-card .accent{color:var(--accent);text-shadow:0 0 18px rgba(0,234,255,0.12)}
+  .hero-card .role{margin-top:8px;color:var(--accent);font-weight:700}
+  .hero-card p.lead{margin-top:14px;color:var(--muted);line-height:1.68}
+
+  .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .btn{padding:10px 16px;border-radius:12px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#001;border:none;box-shadow:0 10px 40px rgba(0,234,255,0.06)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+  .hero-preview{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));}
+  .hero-preview img{width:100%;height:auto;border-radius:10px;display:block}
+
+  section{padding:72px 0}
+  h2{font-size:36px;color:var(--accent);text-shadow:0 0 20px rgba(0,234,255,0.12);margin-bottom:18px}
+  p{color:var(--muted)}
+
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+
+  .card{
+    background:var(--glass);padding:26px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 8px 30px rgba(0,0,0,0.6);transition:transform .45s cubic-bezier(.2,.9,.4,1),box-shadow .45s;
+    transform-style:preserve-3d;
+  }
+  .card:hover{transform:translateY(-14px) rotateX(4deg) rotateY(-3deg) scale(1.03);box-shadow:0 30px 100px rgba(0,234,255,0.06)}
+
+  .card::after{content:"";position:absolute;inset:0;border-radius:14px;padding:1px;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .4s}
+  .card:hover::after{opacity:1;background:linear-gradient(90deg,rgba(0,234,255,0.08),rgba(123,44,255,0.08))}
+
+
+  .skill-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .skill-ring{width:140px;height:140px;border-radius:50%;display:grid;place-items:center;position:relative;border:6px solid rgba(255,255,255,0.12)}
+  .skill-ring .center{font-weight:800}
+  .skill-ring::before{content:"";position:absolute;inset:6px;border-radius:50%;background:conic-gradient(var(--accent),#ff00ff,#ffbf00,var(--accent));mask:linear-gradient(#000 0 0) content-box; padding:6px;opacity:0.16;animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+
+  .project-card img{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+  .project-card{transition:transform .45s,box-shadow .45s}
+  .project-card:hover{transform:translateY(-12px);box-shadow:0 28px 90px rgba(0,0,0,0.6)}
+
+
+  .contact a{display:inline-block;margin:6px 8px;color:var(--muted);text-decoration:none;font-weight:700}
+  .contact a:hover{color:var(--accent);text-shadow:0 0 12px rgba(0,234,255,0.1)}
+
+  footer{padding:26px 0;text-align:center;color:rgba(255,255,255,0.6);font-size:14px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:all .9s cubic-bezier(.2,.9,.4,1)}
+  .reveal.active{opacity:1;transform:none}
+
+
+  .cursor-dot{position:fixed;width:12px;height:12px;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;backdrop-filter:blur(1px)}
+
+
+  @media (max-width:640px){
+    .hero-grid{grid-template-columns:1fr;gap:20px;padding:6px}
+    .hero-card{padding:20px}
+    h2{font-size:28px}
+  }
+</style>
+</head>
+<body>
+<div class="gradient-overlay" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"></div>
+
+<canvas id="particles" aria-hidden="true" style="position:fixed;inset:0;z-index:-4"></canvas>
+
+<main class="wrap" role="main" aria-labelledby="main-title">
+
+
+  <header class="hero" role="banner">
+    <div class="hero-grid">
+      <div class="hero-card" data-aos="fade-up" aria-labelledby="hero-title">
+        <div id="hero-title" class="name">Aslzoda <span class="accent">Bozorboyeva</span></div>
+        <div class="role" id="typed-role">Android • Web • ML Enthusiast</div>
+        <p class="lead" style="margin-top:14px">
+          I am a passionate and focused young developer building elegant, production-ready Android and web experiences.
+          Currently a 9th-grade student from Khorezm, Uzbekistan. I craft apps with clean architecture, polished UI,
+          and delightful micro-interactions.
+        </p>
+
+        <div class="cta-row" style="margin-top:18px">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
+        </div>
+      </div>
+
+<aside class="hero-preview" data-aos="zoom-in" aria-label="Logo">
+  <img src="img/logo.png" alt="Portfolio Logo"
+       style="
+         width:400px;             /* rasm o‘lchami */
+         height:400px;            /* rasm o‘lchami */
+         display:block;           /* markazga joylashish */
+         margin:0 auto;           /* markazlashtirish */
+         border-radius:50%;       /* dumaloq shakl */
+         object-fit:cover;        /* rasm ichini to‘liq qamrab oladi */
+         box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* chiroyli soyalar */
+       ">
+</aside>
+
+
+
+    </div>
+  </header>
+
+  <section id="about" aria-labelledby="about-title" class="reveal">
+    <h2 id="about-title">About Me</h2>
+    <p>
+      Hello — I'm <strong>Aslzoda Bozorboyeva</strong> (born October 23, 2010). I'm a highly motivated 9th-grade student
+      with strong skills in Kotlin, Java, Python, and modern front-end technologies. I focus on accessible, smooth user
+      experiences and reliable app architecture. My projects include IT Park App, Mode App (theme system), and Tasbeh App.
+    </p>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title" class="reveal">
+    <h2 id="skills-title">Skills</h2>
+    <div class="cards">
+      <div class="card" data-skill="Kotlin" aria-label="Kotlin skill card">
+        <div class="skill-wrap">
+          <div class="skill-ring" role="img" aria-label="100 percent Kotlin"><div class="center">100%</div></div>
+          <h3 style="margin-top:12px;text-align:center">Kotlin</h3>
+        </div>
+      </div>
+
+      <div class="card" data-skill="Java" aria-label="Java skill card">
+        <div class="skill-wrap">
+          <div class="skill-ring" role="img" aria-label="100 percent Java"><div class="center">100%</div></div>
+          <h3 style="margin-top:12px;text-align:center">Java</h3>
+        </div>
+      </div>
+
+      <div class="card" data-skill="Python" aria-label="Python skill card">
+        <div class="skill-wrap">
+          <div class="skill-ring" role="img" aria-label="100 percent Python"><div class="center">100%</div></div>
+          <h3 style="margin-top:12px;text-align:center">Python</h3>
+        </div>
+      </div>
+
+      <div class="card" data-skill="HTML/CSS" aria-label="HTML and CSS skill card">
+        <div class="skill-wrap">
+          <div class="skill-ring" role="img" aria-label="100 percent HTML and CSS"><div class="center">100%</div></div>
+          <h3 style="margin-top:12px;text-align:center">HTML &amp; CSS</h3>
+        </div>
+      </div>
+
+      <div class="card" data-skill="Android Studio" aria-label="Android Studio skill card">
+        <div class="skill-wrap">
+          <div class="skill-ring" role="img" aria-label="100 percent Android Studio"><div class="center">100%</div></div>
+          <h3 style="margin-top:12px;text-align:center">Android Studio</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-title" class="reveal">
+    <h2 id="projects-title">Projects</h2>
+    <div class="cards">
+      <article class="card project-card" aria-labelledby="p1">
+        <img src="img/itpark.png" alt="IT Park screenshot">
+        <h3 id="p1">IT Park App</h3>
+        <p>Professional splash, login/register, course lists, and smooth navigation. Built with polished UI and stable architecture.</p>
+      </article>
+
+      <article class="card project-card" aria-labelledby="p2">
+        <img src="img/modeapp.png" alt="Mode App screenshot">
+        <h3 id="p2">Mode App</h3>
+        <p>Light / Dark mode with persistent settings using SharedPreferences. Animated transitions and user-friendly settings UI.</p>
+      </article>
+
+      <article class="card project-card" aria-labelledby="p3">
+        <img src="img/tasbeh.png" alt="Tasbeh App screenshot">
+        <h3 id="p3">Tasbeh App</h3>
+        <p>Advanced tasbeh counter with multiple categories, persistent storage and RecyclerView-driven UI featuring 99 names list.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title" class="reveal">
+    <h2 id="contact-title">Contact</h2>
+    <div class="contact" style="text-align:center">
+      <a href="https://t.me/dev_aurora_web" target="_blank" rel="noopener">Telegram: @dev_aurora_web</a>
+      <a href="mailto:a89848083@gmail.com">Email: a89848083@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Aslzoda Bozorboyeva — All rights reserved.
+  </footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduceMotion){
+  new Typed('#typed-role', {
+    strings: ['Android Developer','Web Developer','Python Programmer','Future IT Leader'],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 1600,
+    startDelay: 400,
+    loop: true
+  });
+} else {
+  document.querySelector('#typed-role').textContent = 'Android • Web • ML Enthusiast';
+}
+
+if(!reduceMotion){
+  AOS.init({duration:900, once:true, offset:120});
+} else {
+(function(){
+  const canvas = document.getElementById('particles');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+  const DPR = Math.max(1, window.devicePixelRatio || 1);
+  canvas.width = innerWidth * DPR; canvas.height = innerHeight * DPR; canvas.style.width = innerWidth + 'px'; canvas.style.height = innerHeight + 'px';
+  ctx.scale(DPR, DPR);
+
+  let particles = [];
+  const N = Math.min(140, Math.floor((innerWidth*innerHeight)/90000));
+  for(let i=0;i<N;i++){
+    particles.push({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: (Math.random()*1.6)+0.6,
+      vx: (Math.random()-0.5)*0.4,
+      vy: (Math.random()-0.5)*0.4,
+      hue: Math.random()*360
+    });
+  }
+
+  function resize(){
+    w = canvas.width = innerWidth * DPR;
+    h = canvas.height = innerHeight * DPR;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  addEventListener('resize', resize);
+
+  function draw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    particles.forEach(p=>{
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < -10) p.x = innerWidth+10;
+      if(p.x > innerWidth+10) p.x = -10;
+      if(p.y < -10) p.y = innerHeight+10;
+      if(p.y > innerHeight+10) p.y = -10;
+
+      p.hue = (p.hue + 0.12) % 360;
+      ctx.beginPath();
+      ctx.fillStyle = `hsla(${p.hue}, 95%, 55%, 0.08)`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 120){
+          ctx.beginPath();
+          const alpha = 0.06 * (1 - (d/120));
+          ctx.strokeStyle = `rgba(0,234,255,${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+  if(!reduceMotion) draw();
+})();
+}
+(function(){
+  if(reduceMotion) return;
+  const maxTrail = 10;
+  const trailElems = [];
+  document.addEventListener('mousemove', (e) => {
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+
+    const t = Math.floor((Date.now()/60) % 360);
+    dot.style.background = `conic-gradient(hsl(${t} 100% 60%), hsl(${(t+80)%360} 100% 60%))`;
+    dot.style.boxShadow = `0 0 18px hsla(${t},100%,60%,0.65), 0 0 40px hsla(${t},100%,60%,0.18)`;
+    dot.style.transform = 'translate(-50%,-50%) scale(1)';
+    dot.style.opacity = '1';
+    dot.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease-out';
+    document.body.appendChild(dot);
+    trailElems.push(dot);
+    if(trailElems.length > maxTrail){
+      const rem = trailElems.shift();
+      rem.remove();
+    }
+    setTimeout(() => {
+      dot.style.transform = 'translate(-50%,-50%) scale(2.6)';
+      dot.style.opacity = '0';
+    }, 20);
+    setTimeout(() => { if(dot.parentElement) dot.remove(); }, 700);
+  });
+})();
+
+(function(){
+  if(reduceMotion) return;
+  const cards = Array.from(document.querySelectorAll('.card'));
+  cards.forEach(card=>{
+    card.style.transformStyle = 'preserve-3d';
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const ry = (px - 0.5) * 14;
+      const rx = (0.5 - py) * 10;
+      card.style.transition = 'transform 120ms linear';
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1)';
+      card.style.transform = '';
+    });
+  });
+})();
+
+(function(){
+  if(!reduceMotion){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  }
+})();
+
+(function colorCycle(){
+  if(reduceMotion) return;
+  const heads = document.querySelectorAll('h2');
+  const rings = document.querySelectorAll('.skill-ring::before'); // pseudo not selectable; we'll cycle container instead
+  setInterval(()=>{
+    const t = Math.floor((Date.now()/60) % 360);
+    heads.forEach(h=> h.style.textShadow = `0 0 18px hsl(${t} 100% 60%)`);
+    document.querySelectorAll('.accent').forEach(a => a.style.color = `hsl(${t} 100% 60%)`);
+  }, 200);
+})();
+
+document.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('focus', ()=> a.style.outline = '3px solid rgba(0,234,255,0.12)');
+  a.addEventListener('blur', ()=> a.style.outline = '');
+});
+</script>
+</body>
+</html>
